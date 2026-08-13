@@ -25,7 +25,7 @@ class WeatherProvider extends ChangeNotifier {
     required double longitude,
   }) async {
     _status = WeatherStatus.loading;
-    notifyListeners(); // خبري الـ UI: صرنا بحالة تحميل
+    notifyListeners();
 
     try {
       final result = await _weatherRepository.getWeather(
@@ -42,6 +42,6 @@ class WeatherProvider extends ChangeNotifier {
       _status = WeatherStatus.error;
     }
 
-    notifyListeners(); // خبري الـ UI: خلص، حدثي حالك
+    notifyListeners();
   }
 }

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ar'),
       theme: ThemeData(
         primaryColor: const Color(0xFF1E8BF0),
-        fontFamily: 'Cairo', // لو مضيفة خط عربي؛ احذفي السطر لو لأ
+        fontFamily: 'Cairo',
         useMaterial3: true,
       ),
       home: const SplashScreen(),

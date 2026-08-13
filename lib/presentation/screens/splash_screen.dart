@@ -32,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // مكان اللوجو
             Container(
               width: 90,
               height: 90,

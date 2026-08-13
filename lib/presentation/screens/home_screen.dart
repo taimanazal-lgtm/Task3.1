@@ -20,8 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // منستنى فريم واحد قبل ما ننادي Provider، عشان نتجنب
-    // مشاكل استدعاء notifyListeners() أثناء الـ build الأول
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _fetchWeather();
     });
@@ -84,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return RefreshIndicator(
       onRefresh: () async => _fetchWeather(),
       child: SingleChildScrollView(
-        // مهم عشان الـ RefreshIndicator يشتغل حتى لو المحتوى قصير وما بيحتاج سحب
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -138,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(width: 48), // موازنة زر الرجوع
+                const SizedBox(width: 48),
               ],
             ),
             const SizedBox(height: 12),
@@ -195,10 +193,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final hourly = weather.hourly;
     final now = DateTime.now();
 
-    // ندور على أقرب ساعة قادمة أو حالية بمصفوفة الوقت
     int startIndex = hourly.time.indexWhere((t) => t.isAfter(now));
     if (startIndex == -1) startIndex = 0;
-    if (startIndex > 0) startIndex -= 1; // نرجع خطوة عشان نمسك "الآن"
+    if (startIndex > 0) startIndex -= 1;
 
     final endIndex = (startIndex + 6).clamp(0, hourly.time.length);
 

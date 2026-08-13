@@ -20,7 +20,6 @@ class CityProvider extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
 
   Future<void> searchCities(String query) async {
-    // لو الحقل فاضي، رجعي للحالة الأولية بدون طلب API
     if (query.trim().isEmpty) {
       _status = CitySearchStatus.initial;
       _cities = [];

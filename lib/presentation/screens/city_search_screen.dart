@@ -18,10 +18,8 @@ class _CitySearchScreenState extends State<CitySearchScreen> {
   Timer? _debounce;
 
   void _onSearchChanged(String query) {
-    // لو في Timer شغال من كتابة سابقة، الغيه
     if (_debounce?.isActive ?? false) _debounce!.cancel();
 
-    // ابدئي Timer جديد
     _debounce = Timer(const Duration(milliseconds: 450), () {
       context.read<CityProvider>().searchCities(query);
     });
